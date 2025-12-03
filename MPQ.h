@@ -1,7 +1,6 @@
 #ifndef MPQ_H
 #define MPQ_H
 
-#include <vector>
 #include <stdexcept>
 
 // Modified Priority Queue Class
@@ -15,10 +14,11 @@ private:
         HeapItem(int v = 0, int l = -1) : value(v), label(l) {}
     };
     
-    std::vector<HeapItem> Heap;      // The heap array (1-indexed)
-    std::vector<int> Location;        // Maps label to position in heap
+    HeapItem* Heap;                   // The heap array (1-indexed)
+    int* Location;                    // Maps label to position in heap
     int currentSize;                  // Current number of items in heap
     int maxLabel;                     // Maximum label value for Location array size
+    int capacity;                     // Capacity of the heap array
     
     // Helper methods for heap operations
     void percolateUp(int hole);

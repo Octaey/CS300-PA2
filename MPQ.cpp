@@ -2,13 +2,20 @@
 
 // Constructor
 MPQ::MPQ(int maxLabelValue) : maxLabel(maxLabelValue), currentSize(0) {
-    Heap.resize(maxLabelValue + 1);  // Index 0 is unused, we use 1-indexed heap
-    Location.resize(maxLabelValue + 1, -1);  // -1 indicates label not in heap
+    capacity = maxLabelValue + 1;
+    Heap = new HeapItem[capacity];  // Index 0 is unused, we use 1-indexed heap
+    Location = new int[capacity];
+    
+    // Initialize Location array to -1 (indicates label not in heap)
+    for (int i = 0; i < capacity; i++) {
+        Location[i] = -1;
+    }
 }
 
 // Destructor
 MPQ::~MPQ() {
-    // Vectors are automatically cleaned up
+    delete[] Heap;
+    delete[] Location;
 }
 
 // Percolate up to maintain max heap property

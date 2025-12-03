@@ -81,7 +81,7 @@ int main() {
     int currentMaxHeight = 0;
     
     // Output initial ground level
-    cout << "0 0" << endl;
+    cout << 0 << " " << 0 << endl;
     
     for (size_t i = 0; i < events.size(); i++) {
         Event& event = events[i];
