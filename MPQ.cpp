@@ -1,8 +1,7 @@
 #include "MPQ.h"
 
 // Constructor
-MPQ::MPQ(int maxLabelValue) : maxLabel(maxLabelValue), currentSize(0) {
-    capacity = maxLabelValue + 1;
+MPQ::MPQ(int maxLabelValue) : currentSize(0), maxLabel(maxLabelValue), capacity(maxLabelValue + 1) {
     Heap = new HeapItem[capacity];  // Index 0 is unused, we use 1-indexed heap
     Location = new int[capacity];
     
