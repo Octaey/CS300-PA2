@@ -3,47 +3,46 @@
 
 #include <stdexcept>
 
-// Modified Priority Queue Class
-// Maintains items with both a value (for comparison) and a label (for identification)
+// modified prio queue class
 class MPQ {
 private:
     struct HeapItem {
-        int value;  // The comparable value (building height)
-        int label;  // The identifying number (building ID)
+        int value;  // building height
+        int label;  // building ID
         
         HeapItem(int v = 0, int l = -1) : value(v), label(l) {}
     };
     
-    HeapItem* Heap;                   // The heap array (1-indexed)
-    int* Location;                    // Maps label to position in heap
-    int currentSize;                  // Current number of items in heap
-    int maxLabel;                     // Maximum label value for Location array size
-    int capacity;                     // Capacity of the heap array
+    HeapItem* Heap;     // heap array (1-indexed)
+    int* Location;      // maps label to position in heap
+    int currentSize;    // current num of items in heap
+    int maxLabel;       // max label value for location array size
+    int capacity;       // capacity of heap array
     
-    // Helper methods for heap operations
+    // helper methods for heap operations
     void percolateUp(int hole);
     void percolateDown(int hole);
     
 public:
-    // Constructor
+    // constructor
     MPQ(int maxLabelValue = 1000);
     
-    // Destructor
+    // destructor
     ~MPQ();
     
-    // Insert an item with given value and label
+    // insert item with given value and label
     void insert(int value, int label);
     
-    // Remove and return the value with this label
+    // remove and return value with this label
     int Remove(int label);
     
-    // Return the maximum value currently stored (without removing)
+    // return max value currently stored (without removing)
     int GetMax();
     
-    // Check if the MPQ is empty
+    // check if MPQ is empty
     bool IsEmpty() const;
     
-    // Get current size (useful for debugging)
+    // get current size (good for debugging)
     int size() const { return currentSize; }
 };
 
